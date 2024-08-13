@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['id'])){
+    header('location:index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +34,7 @@
     </table>
     <br>
     <div style="text-align: center;">
-        <a href="/work2/index.html" target="_blank" >กลับไปหน้าหลัก</a>
+        <a href="index.php" target="_blank" >กลับไปหน้าหลัก</a>
     </div>
     
 </body>

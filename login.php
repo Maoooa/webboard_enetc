@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['id'])){
+    header('location:index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +30,7 @@
 
     <br>
     <div style="text-align: center;">
-        ถ้ายังไม่ได้เป็นสมาชิก <a href="/work2/register.html">กรุณาสมัครสมาชิก</a>
+        ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a>
     </div>
 
     
