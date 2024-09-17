@@ -13,20 +13,20 @@
             <!-- Text Field -->
             <div class="mb-3">
                 <label for="name" class="form-label">ชื่อ</label>
-                <input type="text" placeholder="กรุณาป้อนชื่อ" class="form-control">
+                <input id="name" type="text" placeholder="กรุณาป้อนชื่อ" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">อีเมล</label>
-                <input type="email" placeholder="กรุณาป้อนอีเมล" class="form-control">
+                <input id="email" type="email" placeholder="กรุณาป้อนอีเมล" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">รหัสผ่าน</label>
-                <input type="password" placeholder="กรุณาป้อนรหัสผ่าน" class="form-control">
+                <input id="password" type="password" placeholder="กรุณาป้อนรหัสผ่าน" class="form-control">
             </div>
             <!-- Select -->
             <div class="mb-3">
                 <label for="job" class="form-label">อาชีพ</label>
-                <select name="job" class="form-select">
+                <select id="job" name="job" class="form-select">
                     <option>Programmer</option>
                     <option>Developer</option>
                     <option>อาจารย์</option>
@@ -45,43 +45,43 @@
             </div>
             <!-- Range -->
             <div class="mb-3">
-                <label class="">ประสบการณ์ทำงาน</label>
-                <input type="range" min="1"  max="5" value="5">
+                <label class="form-label">ประสบการณ์ทำงาน</label>
+                <input type="range" min="1"  max="5" value="5" class="form-range">
             </div>
-            <input type="submit" name="" id="" value="บันทึกข้อมูล">
+            <input type="submit" name="" id="" value="บันทึกข้อมูล" class="btn btn-success">
         </form>
         <br>
         <!-- Form Check -->
-        <form>
+        <form class="mb-3">
             <div>
-                <label>ชื่อ</label>
-                <input type="text" placeholder="กรุณาป้อนชื่อ">
+                <label class="form-label">ชื่อ</label>
+                <input type="text" placeholder="กรุณาป้อนชื่อ" class="form-control">
             </div>
             <div>
-                <label>รหัสผ่าน</label>
-                <input type="password" placeholder="กรุณาป้อนรหัสผ่าน">
+                <label class="form-label">รหัสผ่าน</label>
+                <input type="password" placeholder="กรุณาป้อนรหัสผ่าน" class="form-control">
             </div>
-            <div>
+            <div class="form-check">
                 <label>
-                    <input type="checkbox" name="">ฉันยอมรับเงื่อนไข
+                    <input type="checkbox" name="" class="form-check-input">ฉันยอมรับเงื่อนไข
                 </label>
             </div>
-            <button>ส่งข้อมูล</button>
+            <button class="btn btn-danger">ส่งข้อมูล</button>
         </form>
         <br>
         <!-- Validation -->
-        <div>
-            <label for="name">ชื่อ</label>
-            <input type="text" placeholder="กรุณาป้อนชื่อ">
+        <div class="mb-3">
+            <label for="name" class="form-label">ชื่อ</label>
+            <input type="text" placeholder="กรุณาป้อนชื่อ" class="form-control is-valid">
         </div>
         <div>
-            <label for="email">อีเมล</label>
-            <input type="email" placeholder="กรุณาป้อนอีเมล">
+            <label for="email" class="form-label">อีเมล</label>
+            <input type="email" placeholder="กรุณาป้อนอีเมล" class="form-control is-invalid">
         </div>
         <div>
-            <label for="password">รหัสผ่าน</label>
-            <input type="password" placeholder="กรุณาป้อนรหัสผ่าน">
-            <div>ป้อนรหัสผ่านไม่ถูกต้อง</div>
+            <label for="password" class="form-label">รหัสผ่าน</label>
+            <input type="password" placeholder="กรุณาป้อนรหัสผ่าน" class="form-control is-invalid">
+            <div class="invalid-feedback">ป้อนรหัสผ่านไม่ถูกต้อง</div>
         </div>
     </div>
 </body>
