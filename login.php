@@ -1,38 +1,59 @@
 <?php
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     header('location:index.php');
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
-   
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
-    <h1 style="text-align: center;">Webboard KakKak</h1>
-    <hr>
-    <form action="verify.php" method="post">
-        <table style="border: 2px solid black; width: 40%;  " align ="center">
-            <tr><td colspan="2" style="background-color: #6CD2FE;">เข้าสู่ระบบ</td></tr>
-            <tr><td>Login</td><td><input type="text" name="login"></td></tr>
-            <tr><td>password</td><td><input type="password" name="pwd"></td></tr>
-            <tr><td colspan="2" align="center" >
-                <input type="submit" value="Login">
-            </td></tr>      
-    </table>
-    </form>
+    <div class="container-lg">
+        <h1 style="text-align: center;" class="mt-3">Webboard KakKak</h1>
+        <!-- navbar -->
+        <?php include "nav.php" ?>
+        <!-- alret -->
 
-    <br>
-    <div style="text-align: center;">
-        ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a>
+        <!-- class crad -->
+        <form action="verify.php" method="post">
+            <div class="row">
+                <div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
+                    <div class="card mt-4 ">
+                        <h5 class="card-header">เข้าสู่ระบบ</h5>
+                        <div class="card-body">
+                            <div class="from-group mb-3">
+                                <label for="login" class="from-label">Login:</label>
+                                <input type="text" id="login" class="form-control" name="login">
+                            </div>
+                            <div class="from-group mb-3">
+                                <label for="pwd" class="from-label ">Password:</label>
+                                <input type="password" id="pwd" class="form-control" name="pwd">
+                            </div>
+                            <div class="mt-3 d-flex justify-content-center ">
+                                <button type="submit" id="login" class="btn btn-primary  me-2">Login</button>
+                                <button type="submit" id="reset" class="btn btn-danger">Reset</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- register -->
+        <div style="text-align: center;" class="mt-3">
+            ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a>
+        </div>
+
     </div>
-
-    
 </body>
+
 </html>

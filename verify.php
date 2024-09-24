@@ -31,7 +31,7 @@ if(isset($_SESSION['id'])){
             $_SESSION["username"] = "member";
             $_SESSION["role"] = "m";
             $_SESSION["id"] = session_id();
-            echo "ยินดีต้อนรับคุณ ADMIN ";
+            echo "ยินดีต้อนรับคุณ MEMBER ";
             echo "<a href="."index.php"."> <BR> กลับไปยังหน้าหลัก</a>";
         } else{
             echo "ชื่อบัญชีและรหัสผ่านไม่ถูกต้อง";

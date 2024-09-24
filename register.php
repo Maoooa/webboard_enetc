@@ -34,7 +34,7 @@ if(isset($_SESSION['id'])){
     </table>
     <br>
     <div style="text-align: center;">
-        <a href="index.php" target="_blank" >กลับไปหน้าหลัก</a>
+        <a href="index.php" >กลับไปหน้าหลัก</a>
     </div>
     
 </body>
