@@ -25,10 +25,19 @@ session_start();
             <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 --ทั้งหมด--
             </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">ทั้งหมด</a></li>
+            <ul class="dropdown-menu" aria-labelledby="button2">
+                <!-- <li><a class="dropdown-item" href="#">ทั้งหมด</a></li>
                 <li><a class="dropdown-item" href="#">เรื่องทั่วไป</a></li>
-                <li><a class="dropdown-item" href="#">เรื่องเรียน</a></li>
+                <li><a class="dropdown-item" href="#">เรื่องเรียน</a></li> -->
+                <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                <?php
+                    $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                    $sql = "SELECT * FROM category";
+                    foreach($conn->query($sql) as $row){
+                        echo "<li><a class=dropdown-item href=#>$row[name]</a></li>";
+                    }
+                    $conn=null;
+                ?>
             </ul>
             <?php 
                 if(isset($_SESSION['id'])){
