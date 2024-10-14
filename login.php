@@ -15,16 +15,19 @@ if (isset($_SESSION['id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- iconpwd -->
     <script>
         function togglepwd(){
             const passwordInput = document.getElementById('pwd');
-            const click = document.getElementById('click');
+            const icon = document.getElementById('click');
             if(passwordInput.type == 'password'){
                 passwordInput.type = 'text';
-                click.classList.replace( bi-eye-fill,bi-eye-slash-fill);
+                icon.classList.remove("bi-eye-fill"); // ลบคลาสตาเปิด
+                icon.classList.add("bi-eye-slash-fill"); // เพิ่มคลาสตาปิด
             }else{
                 passwordInput.type = 'password';
-                click.classList.replace( bi-eye-slash-fill,bi-eye-fill);
+                icon.classList.remove("bi-eye-slash-fill"); // เพิ่มคลาสตาปิด
+                icon.classList.add("bi-eye-fill"); // ลบคลาสตาเปิด
             }
         }
     </script>
@@ -53,10 +56,12 @@ if (isset($_SESSION['id'])) {
                                 <label for="login" class="from-label">Login:</label>
                                 <input type="text" id="login" class="form-control" name="login">
                             </div>
-                            <div class="from-group mb-3" >
-                                <label for="pwd" class="from-label ">Password:</label>
-                                <input type="password" id="pwd" class="form-control" name="pwd">
-                                <button type="button" onclick="togglepwd()" id="click" ><i class="bi bi-eye-fill"></i></button>
+                            <div class="from-group  mb-3" >
+                                <label for="pwd" class="from-label ">Password:</label><br>
+                                <div class="input-group">
+                                    <input type="password" id="pwd" class="form-control" name="pwd">
+                                    <button type="button" onclick="togglepwd()" class="input-group-text" ><i class="bi bi-eye-fill" id="click"></i></button>
+                                </div>
                             </div>
                             <div class="mt-3 d-flex justify-content-center ">
                                 <button type="submit" id="login" class="btn btn-primary  me-2">Login</button>
