@@ -15,6 +15,16 @@ if (isset($_SESSION['id'])) {
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>register</title>
+    <!-- checkpwd -->
+    <script>
+        function checkpwd(){
+            if(document.getElementById('pwd').value !== document.getElementById('confpwd').value){
+                alert('รหัสผ่านไม่ตรงกัน');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -23,7 +33,7 @@ if (isset($_SESSION['id'])) {
         <!-- navbar -->
         <?php include "nav.php" ?>
         <!-- class crad -->
-        <form action="register_save.php" method="post">
+        <form action="register_save.php" method="post" onsubmit="return checkpwd()">
             <div class="row mt-4">
                 <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
                     <!-- alert -->
@@ -57,6 +67,16 @@ if (isset($_SESSION['id'])) {
                                 </div>
                                 <div class="col-lg-9 mx-auto my-auto ">
                                     <input type="password" id="pwd" class="form-control" name="pwd" require>
+                                </div>
+                            </div>
+
+                            <!-- confpwd -->
+                            <div class="row mb-3">
+                                <div class="col-lg-3 mx-auto my-auto ">
+                                    <label for="pwd" class="from-label">ยืนยันรหัสผ่าน:</label>
+                                </div>
+                                <div class="col-lg-9 mx-auto my-auto ">
+                                    <input type="password" id="confpwd" class="form-control" name="pwd" require>
                                 </div>
                             </div>
 
