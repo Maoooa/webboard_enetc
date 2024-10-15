@@ -76,7 +76,7 @@ if (isset($_SESSION['id'])) {
                                     <label for="pwd" class="from-label">ยืนยันรหัสผ่าน:</label>
                                 </div>
                                 <div class="col-lg-9 mx-auto my-auto ">
-                                    <input type="password" id="confpwd" class="form-control" name="pwd" require>
+                                    <input type="password" id="confpwd" onblur ="checkpwd()" class="form-control" name="pwd" require>
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@ if (isset($_SESSION['id'])) {
         </form>
         <!-- register -->
         <div style="text-align: center;" class="mt-3">
-            ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a>
+            หากมีบัญชีอยู่แล้ว <a href="login.php">เข้าสู่ระบบ</a>
         </div>
 
     </div>

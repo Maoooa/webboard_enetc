@@ -22,12 +22,12 @@ if (isset($_SESSION['id'])) {
             const icon = document.getElementById('click');
             if(passwordInput.type == 'password'){
                 passwordInput.type = 'text';
-                icon.classList.remove("bi-eye-fill"); // ลบคลาสตาเปิด
-                icon.classList.add("bi-eye-slash-fill"); // เพิ่มคลาสตาปิด
+                icon.classList.remove("bi-eye-fill"); 
+                icon.classList.add("bi-eye-slash-fill"); 
             }else{
                 passwordInput.type = 'password';
-                icon.classList.remove("bi-eye-slash-fill"); // เพิ่มคลาสตาปิด
-                icon.classList.add("bi-eye-fill"); // ลบคลาสตาเปิด
+                icon.classList.remove("bi-eye-slash-fill"); 
+                icon.classList.add("bi-eye-fill"); 
             }
         }
     </script>
