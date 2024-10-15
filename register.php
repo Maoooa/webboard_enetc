@@ -18,8 +18,12 @@ if (isset($_SESSION['id'])) {
     <!-- checkpwd -->
     <script>
         function checkpwd(){
-            if(document.getElementById('pwd').value !== document.getElementById('confpwd').value){
+            pwd1 = document.getElementById('pwd');
+            pwd2 = document.getElementById('confpwd');
+            if( pwd1.value !== pwd2.value){
                 alert('รหัสผ่านไม่ตรงกัน');
+                pwd1.value = "";
+                pwd2.value = "";
                 return false;
             }
             return true;
