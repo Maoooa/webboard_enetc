@@ -12,15 +12,6 @@
 </head>
 
 <body>
-
-    <!-- <div style="text-align: center;">
-        <table style="border: 2px soild black;"; width: 40; align="center">
-            <tr><td style="background-color: #6CD2FE;">แสดงความคิดเห็น</td></tr>
-            <tr><td><textarea></textarea></td></tr>
-            <tr><td><input type="submit" value="ส่งข้อความ"></td></tr>
-        </table>
-        <p><a href="index.php">กลับไปหน้าหลัก</a></p>
-    </div> -->
     <!-- card -->
     <div class="container-lg">
 
