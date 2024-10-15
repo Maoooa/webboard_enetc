@@ -33,9 +33,6 @@ session_start();
                 --ทั้งหมด--
             </a>
             <ul class="dropdown-menu" aria-labelledby="button2">
-                <!-- <li><a class="dropdown-item" href="#">ทั้งหมด</a></li>
-                <li><a class="dropdown-item" href="#">เรื่องทั่วไป</a></li>
-                <li><a class="dropdown-item" href="#">เรื่องเรียน</a></li> -->
                 <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
                 <?php
                 $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
