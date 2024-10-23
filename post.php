@@ -61,34 +61,30 @@
         ?>
 
         <!-- textarea -->
-        <div class="card text-dark bg-white border-success mt-5 col-sm-11 col-md-10 col-lg-8   mx-auto">
-            <div class="card-header bg-success text-white ">แสดงความคิดเห็น</div>
-            <div class="card-body">
-                <form action="post_save.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $_GET['id']; ?>">
-                    <div class="row mb-3 justify-content-center ">
-                        <div class="col-lg-10">
-                            <textarea name="comment" class="form-control" rows="8"></textarea>
-
+        <?php if (isset($_SESSION['id']) && $_SESSION['role'] !== 'b') { // ตรวจสอบว่าผู้ใช้ไม่ได้ถูกแบน ?>
+            <div class="card text-dark bg-white border-success mt-5 col-sm-11 col-md-10 col-lg-8 mx-auto">
+                <div class="card-header bg-success text-white">แสดงความคิดเห็น</div>
+                <div class="card-body">
+                    <form action="post_save.php" method="post">
+                        <input type="hidden" name="post_id" value="<?= htmlspecialchars($_GET['id']); ?>">
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-lg-10">
+                                <textarea name="comment" class="form-control" rows="8" required></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <center>
-                                <button type="submit" class="btn btn-success btn-sm text-white">
-                                    <i class="bi bi-box-arrow-up-right me-10"></i><i>ส่งข้อความ</i>
-                                </button>
-                            </center>
-
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <center>
+                                    <button type="submit" class="btn btn-success btn-sm text-white">
+                                        <i class="bi bi-box-arrow-up-right me-10"></i><i>ส่งข้อความ</i>
+                                    </button>
+                                </center>
+                            </div>
                         </div>
-
-                    </div>
-
-                </form>
-
+                    </form>
+                </div>
             </div>
-
-        </div>
+        <?php } ?>
 
 </body>
 
