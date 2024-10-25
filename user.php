@@ -21,12 +21,16 @@ session_start();
         <?php include "nav.php" ?>
 
         <!-- แสดงข้อความแจ้งเตือน -->
-        <?php if (isset($_SESSION['success'])){
-            echo " <div class='alert alert-success mt-3'> $_SESSION[success] </div> ";
-                unset($_SESSION['success']);
-                
-        } ?>
-
+        <div class=" text-dark bg-white  mx-auto mt-5">
+            <?php
+                if (isset($_SESSION['seccess'])){
+                    if ($_SESSION['seccess'] == 'done'){
+                        echo "<div class='alert alert-success'>แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว</div>";
+                    }
+                    unset($_SESSION['seccess']);
+                }
+            ?>
+        </div>
         <table class="table table-striped mt-4" style="text-align: center;">
             <thead>
                 <tr>
@@ -99,7 +103,7 @@ session_start();
                         <select id="role" name="role" class="form-select">
                             <option value="m">Member</option>
                             <option value="a">Admin</option>
-                            <option value="b">Ban</option>
+                            <option value="b">Band</option>
                         </select>
                         <input id="ID" class="form-control" type="hidden" name="ID">
                     </div>

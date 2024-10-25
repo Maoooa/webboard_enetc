@@ -17,7 +17,7 @@ session_start();
         <h1 style="text-align: center;" class="mt-3">Webboard KakKak</h1>
         <?php include "nav.php"; ?>
         <div class="container-fluid">
-            <div class=" text-dark bg-white col-lg-8 mx-auto mt-5">
+            <div class=" text-dark bg-white col-lg-8 mx-auto mt-5" style="width:700px;">
                  <?php
                     if (isset($_SESSION['cat_add_save'])){
                         if ($_SESSION['cat_add_save'] == 'done'){
@@ -32,7 +32,7 @@ session_start();
                     }
                     if (isset($_SESSION['cat_edit_save'])){
                        if ($_SESSION['cat_edit_save'] == 'done'){
-                            echo "<div class='alert alert-success'>แก้ไขหมู่เรียบร้อยแล้ว</div>";
+                            echo "<div class='alert alert-success'>แก้ไขหมวดหมู่เรียบร้อยแล้ว</div>";
                         }
                         unset($_SESSION['cat_edit_save']);
                     }
