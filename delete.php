@@ -1,18 +1,33 @@
 <?php
-    session_start();
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 'a') {
+session_start();
 
-        $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
+// ตรวจสอบว่าผู้ใช้ล็อกอินหรือไม่
+if (!isset($_SESSION['id'])) {
+    header("location:index.php");
+    die();
+}
 
-        $sql_post = "DELETE FROM post WHERE id = $_GET[id]";
-        $conn->exec($sql_post);
-        $sql_com = "DELETE FROM comment WHERE post_id = $_GET[id]";
-        $conn->exec($sql_com);
+// เชื่อมต่อฐานข้อมูล
+$conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
 
-        $conn = null;
-        header("location:index.php");
-    } else {
-        header("location:index.php");
-        die();
-    }
+// ดึง user_id ของโพสต์นั้น ๆ เพื่อตรวจสอบเจ้าของ
+$post_id = $_GET['id'];
+$sql = "SELECT user_id FROM post WHERE id = $post_id";
+$result = $conn->query($sql);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+// ตรวจสอบสิทธิ์: ต้องเป็น admin หรือเจ้าของโพสต์เท่านั้น
+if ($row && ($_SESSION['role'] == 'a' || $_SESSION['user_id'] == $row['user_id'])) {
+    // ลบโพสต์และความคิดเห็นที่เกี่ยวข้อง
+    $conn->exec("DELETE FROM post WHERE id = $post_id");
+    $conn->exec("DELETE FROM comment WHERE post_id = $post_id");
+
+    header("location:index.php");
+} else {
+    // หากไม่มีสิทธิ์ในการลบ
+    header("location:index.php");
+    die();
+}
+
+$conn = null;
 ?>

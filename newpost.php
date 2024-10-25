@@ -16,55 +16,6 @@ if(!isset($_SESSION['id'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- <h1 style="text-align: center;">Webboard KakKak</h1>
-    <hr>
-    <br> 
-    <table>
-        <tr>
-            <td>
-                ผู้ใช้ :
-            </td>
-            <td >
-                <?php 
-                echo "$_SESSION[username]";
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                หมวดหมู่ :
-            </td>
-            <td >
-                <select name="category">
-                    <option value="all">--ทั้งหมด--</option>
-                    <option value="general">เรื่องทั่วไป</option>
-                    <option value="study">เรื่องเรียน</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                หัวข้อ :
-            </td>
-            <td>
-                <input type="text">
-            </td>
-        </tr>
-            <td>
-                เนื้อหา :  
-            </td>
-            <td>
-                <textarea></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td ></td> 
-            <td >
-                <input type="submit" value="บันทึกข้อความ">
-            </td>
-        </tr>
-    </table>
-     -->
      <div class="container-lg">
         <h1 style="text-align: center;" class="mt-3">Webboard KakKak</h1>
         <!-- navbar -->
@@ -77,8 +28,6 @@ if(!isset($_SESSION['id'])){
                         <label class="col-lg-3 col-form-label">หมวดหมู่ :</label>
                         <div class="col-lg-9">
                             <select name="category" class="form-select">
-                                <!-- <option value="general">เรื่องทั่วไป</option>
-                                <option value="study">เรื่องเรียน</option> -->
                                 <?php
                                     $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
                                     $sql = "SELECT * FROM category";

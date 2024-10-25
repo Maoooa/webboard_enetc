@@ -1,19 +1,6 @@
 <?php
 session_start();
 
-// ตรวจสอบว่าผู้ใช้มีสิทธิเป็น admin หรือไม่
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'a') {
-    header("Location: index.php");
-    exit();
-}
-
-// เชื่อมต่อฐานข้อมูล
-$conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
-
-// ดึงข้อมูลผู้ใช้ทั้งหมด
-$sql = "SELECT * FROM user";
-$users = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-$conn = null; // ปิดการเชื่อมต่อ
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +9,9 @@ $conn = null; // ปิดการเชื่อมต่อ
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จัดการผู้ใช้งาน</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -39,7 +27,7 @@ $conn = null; // ปิดการเชื่อมต่อ
                 
         } ?>
 
-        <table class="table table-striped mt-4">
+        <table class="table table-striped mt-4" style="text-align: center;">
             <thead>
                 <tr>
                     <th>ชื่อผู้ใช้</th>
@@ -51,70 +39,91 @@ $conn = null; // ปิดการเชื่อมต่อ
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $row): ?>
-                    <tr>
-                        <td><?= $row['login'] ?></td>
-                        <td><?= $row['name'] ?></td>
-                        <td><?= $row['gender'] ?></td>
-                        <td><?= $row['email'] ?></td>
-                        <td><?= $row['role'] ?></td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $row['id'] ?>">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Modal แก้ไขผู้ใช้ -->
-                    <div class="modal fade" id="editUserModal<?= $row['id'] ?>" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="editUserModalLabel">แก้ไขข้อมูลผู้ใช้</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="edituser.php" method="post">
-                                        <input type="hidden" name="user_id" value="<?= $row['id'] ?>">
-                                        <div class="mb-3">
-                                            <label for="login" class="form-label">ชื่อผู้ใช้</label>
-                                            <input type="text" class="form-control" name="login" value="<?= $row['login'] ?>" disabled>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="name" class="form-label">ชื่อ-นามสกุล</label>
-                                            <input type="text" class="form-control" name="name" value="<?= $row['name'] ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="gender" class="form-label">เพศ</label>
-                                            <select name="gender" class="form-select" required>
-                                                <option value="ชาย" <?= $row['gender'] == 'ชาย' ? 'selected' : '' ?>>ชาย</option>
-                                                <option value="หญิง" <?= $row['gender'] == 'หญิง' ? 'selected' : '' ?>>หญิง</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">อีเมล</label>
-                                            <input type="email" class="form-control" name="email" value="<?= $row['email'] ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="role" class="form-label">สิทธิ</label>
-                                            <select name="role" class="form-select" required>
-                                                <option value="m" <?= $row['role'] == 'm' ? 'selected' : '' ?>>Member</option>
-                                                <option value="b" <?= $row['role'] == 'b' ? 'selected' : '' ?>>Band</option>
-                                                <option value="a" <?= $row['role'] == 'a' ? 'selected' : '' ?>>Admin</option>
-                                            </select>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                                            <button type="submit" class="btn btn-warning">บันทึกการแก้ไข</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+            <center>
+            <?php
+                $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root", "");
+                $sql="SELECT id,login,name,gender,email,role From user Order by id ASC";
+                $result=$conn->query($sql);
+                $i=1;
+                    while($row = $result->fetch()){
+                        $rowData = json_encode($row);
+                        echo "<tr>
+                                <td >$i</td>
+                                <td >$row[1]</td>
+                                <td >$row[2]</td>
+                                <td >$row[3]</td>
+                                <td >$row[4]</td>
+                                <td >$row[5]</td>
+                                <td >
+                                    <a class='btn btn-warning' role='button' data-bs-toggle='modal' data-bs-target='#editModal' data-value-raw='$rowData' onclick='setModalData(this)'>
+                                        <i class='bi bi-pencil-fill'></i>
+                                    </a>
+                                </td>
+                            </tr>";
+                            $i++;
+                   }
+                    $conn=null;
+            ?>
+            </center>
             </tbody>
         </table>
+        
     </div>
+    <!-- Modal แก้ไขผู้ใช้ -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> แก้ไขข้อมูลผู้ใช้</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="edituser.php" method="post">
+                    <div class="modal-body">
+                        <div class="mb-1">ชื่อผู้ใช้ </div>
+                        <input id="username" class="form-control" type="text" name="login" disabled>
+
+                        <div class="mb-1">ชื่อ-นามสกุล </div>
+                        <input id="name" class="form-control" type="text" name="name">
+
+                        <div class="mb-1">เพศ </div>
+                        <select id="gender" name="gender" class="form-select">
+                            <option value="m">ชาย</option>
+                            <option value="f">หญิง</option>
+                            <option value="o">อื่นๆ</option>
+                        </select>
+
+                        <div class="mb-1">อีเมล </div>
+                        <input id="mail" class="form-control" type="text" name="email">
+
+                        <div class="mb-1">สิทธิ์</div>
+                        <select id="role" name="role" class="form-select">
+                            <option value="m">Member</option>
+                            <option value="a">Admin</option>
+                            <option value="b">Ban</option>
+                        </select>
+                        <input id="ID" class="form-control" type="hidden" name="ID">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            function setModalData(button){
+                const rowData = JSON.parse(button.getAttribute('data-value-raw'));
+
+                document.getElementById('ID').value = rowData[0];
+                document.getElementById('username').value = rowData[1];
+                document.getElementById('name').value = rowData[2];
+                document.getElementById('gender').value = rowData[3];
+                document.getElementById('mail').value = rowData[4];
+                document.getElementById('role').value = rowData[5];
+            }
+        </script>
+    </div>
+       
 </body>
 </html>
