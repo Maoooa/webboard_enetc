@@ -2,7 +2,7 @@
     session_start();
     $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
     $id = $_GET['id'];
-    $sql = "SELECT id,title,content,cat_id,user_id FROM post where id =$id";
+    $sql = " SELECT id,title,content,cat_id,user_id FROM post where id =$id ";
     $result = $conn->query($sql);
     $data=$result->fetch(PDO::FETCH_ASSOC);
     $conn=null;

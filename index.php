@@ -57,8 +57,8 @@ session_start();
 
                 $cat_id = isset($_GET['cat_id']) ? $_GET['cat_id'] : '';
                 $sql = "SELECT t3.name, t1.title, t1.id, t2.login, t1.post_date, t1.user_id FROM post AS t1
-                        INNER JOIN user AS t2 ON (t1.user_id = t2.id)
-                        INNER JOIN category AS t3 ON (t1.cat_id = t3.id)
+                        INNER JOIN user AS t2 ON t1.user_id = t2.id
+                        INNER JOIN category AS t3 ON t1.cat_id = t3.id
                         WHERE t2.role != 'b'"; // ตรวจสอบว่าผู้ใช้ไม่ได้ถูกแบน
                 
                 if ($cat_id) {
